@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import SignOutButton from "./sign-out-button";
 import LocalTime from "./local-time";
+import DailySummary from "./daily-summary";
 
 export default async function Dashboard() {
   const supabase = await createClient();
@@ -28,6 +29,8 @@ export default async function Dashboard() {
         </div>
 
         {error && <p className="text-red-600">加载反馈失败。</p>}
+
+        {feedback && feedback.length > 0 && <DailySummary feedback={feedback} />}
 
         {feedback && feedback.length === 0 && (
           <p className="text-gray-500">暂无反馈。</p>
