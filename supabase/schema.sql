@@ -12,7 +12,7 @@ alter table public.feedback enable row level security;
 create policy "Anyone can insert feedback"
   on public.feedback
   for insert
-  to anon
+  to public
   with check (true);
 
 -- Only logged-in users (the restaurant owner) can read feedback
